@@ -20,3 +20,25 @@ ServiceStack.Logging also includes adapters for the following logging providers:
 * EventLog
 * Console Log
 * Debug Log
+* Null / Empty Log
+
+# Usage Examples
+
+Once on your App Startup, either In your AppHost.cs or Global.asax file inject the concrete logging implementation that your app should use, e.g.
+
+## Log4Net
+    LogManager.LogFactory = new Log4NetFactory();
+
+## Event Log
+    LogManager.LogFactory = new EventLogFactory("ServiceStack.Logging.Tests", "Application");
+
+Then your application logic can bind to and use a lightweight implementation-free ILog which at runtime will be an instance of the concrete implementation configured in your host:
+
+    ILog log = LogManager.GetLogger(GetType());
+
+    log.Debug("Debug Event Log Entry.");
+    log.Warn("Warning Event Log Entry.");
+
+
+
+
