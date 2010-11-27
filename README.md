@@ -1,4 +1,4 @@
-##ServiceStack.Logging an implementation and dependency-free logging interface to bind to.
+##ServiceStack.Logging an implementation-free logging interface for your app logic to bind to.
 
 Even in the spirit of **Bind to interfaces, not implemenations**, many .NET projects still have
 a hard dependency to [log4net](http://logging.apache.org/log4net/index.html). 
