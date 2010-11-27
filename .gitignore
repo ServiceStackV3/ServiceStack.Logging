@@ -1,0 +1,6 @@
+.suo
+bin/
+obj/
+_ReSharper.ServiceStack.Logging/
+.idea/
+release/
