@@ -27,7 +27,7 @@ ServiceStack.Logging also includes adapters for the following logging providers:
 Once on your App Startup, either In your AppHost.cs or Global.asax file inject the concrete logging implementation that your app should use, e.g.
 
 ## Log4Net
-    LogManager.LogFactory = new Log4NetFactory();
+    LogManager.LogFactory = new Log4NetFactory(true); //Also runs log4net.Config.XmlConfigurator.Configure()
 
 ## Event Log
     LogManager.LogFactory = new EventLogFactory("ServiceStack.Logging.Tests", "Application");
