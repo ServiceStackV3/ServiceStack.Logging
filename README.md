@@ -1,6 +1,6 @@
 ##ServiceStack.Logging an implementation and dependency-free logging interface to bind to.
 
-Even in the spirit of *Bind to interfaces, not implemenations*, many .NET projects still have
+Even in the spirit of **Bind to interfaces, not implemenations**, many .NET projects still have
 a hard dependency to [log4net](http://logging.apache.org/log4net/index.html). 
 
 Although log4net is the standard for logging in .NET, potential problems can arise from your libraries having a hard dependency on it:
