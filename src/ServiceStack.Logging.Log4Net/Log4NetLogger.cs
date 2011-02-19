@@ -1,11 +1,12 @@
 using System;
+using ServiceStack.Logging;
 
 namespace ServiceStack.Logging.Log4Net
 {
     /// <summary>
     /// Wrapper over the log4net.1.2.10 and above logger 
     /// </summary>
-    public class Log4NetLogger : ILog
+	public class Log4NetLogger : ServiceStack.Logging.ILog
     {
         private readonly log4net.ILog log;
 

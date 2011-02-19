@@ -1,11 +1,12 @@
 using System;
+using ServiceStack.Logging;
 
 namespace ServiceStack.Logging.Log4Net
 {
     /// <summary>
     /// ILogFactory that creates an Log4Net ILog logger
     /// </summary>
-    public class Log4NetFactory : ILogFactory
+	public class Log4NetFactory : ServiceStack.Logging.ILogFactory
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Log4NetFactory"/> class.

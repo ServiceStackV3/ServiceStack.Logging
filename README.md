@@ -1,4 +1,5 @@
 ## ServiceStack.Logging an implementation-free logging interface for your app logic to bind to
+For twitter updates follow <a href="http://twitter.com/demisbellot">@demisbellot</a> or <a href="http://twitter.com/servicestack">@ServiceStack</a>
 
 Even in the spirit of **Bind to interfaces, not implemenations**, many .NET projects still have
 a hard dependency to [log4net](http://logging.apache.org/log4net/index.html). 
