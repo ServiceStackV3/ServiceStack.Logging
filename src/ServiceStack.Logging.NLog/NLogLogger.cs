@@ -42,7 +42,7 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="exception">The exception.</param>
         public void Debug(object message, Exception exception)
         {
-            log.Debug(message + " : " + exception.ToString());
+            log.DebugException(message.ToString(), exception);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="exception">The exception.</param>
         public void Error(object message, Exception exception)
         {
-            log.Error(message + " : " + exception.ToString());
+            log.ErrorException(message.ToString(), exception);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="exception">The exception.</param>
         public void Fatal(object message, Exception exception)
         {
-            log.Fatal(message + " : " + exception.ToString());
+            log.FatalException(message.ToString(), exception);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="exception">The exception.</param>
         public void Info(object message, Exception exception)
         {
-            log.Info(message + " : " + exception.ToString());
+            log.InfoException(message.ToString(), exception);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="exception">The exception.</param>
         public void Warn(object message, Exception exception)
         {
-            log.Warn(message + " : " + exception.ToString());
+            log.WarnException(message.ToString(), exception);
         }
 
         /// <summary>
