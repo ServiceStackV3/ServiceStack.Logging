@@ -84,6 +84,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\TestBase.cs" />
+    <Compile Include="UnitTests\ElmahInterceptingLoggerTests.cs" />
+    <Compile Include="UnitTests\ElmahLogFactoryTest.cs" />
     <Compile Include="UnitTests\EventLoggerTests.cs" />
     <Compile Include="UnitTests\EventLogFactoryTests.cs" />
     <Compile Include="UnitTests\DebugLoggerTests.cs" />
@@ -123,6 +125,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\ServiceStack.Logging.Elmah\ServiceStack.Logging.Elmah.csproj">
+      <Project>{EE43BF1E-CF97-4215-A5A3-46D1C363F928}</Project>
+      <Name>ServiceStack.Logging.Elmah</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\ServiceStack.Logging.EventLog\ServiceStack.Logging.EventLog.csproj">
       <Project>{D920BA88-E394-4C75-94E3-78D7298A8457}</Project>
       <Name>ServiceStack.Logging.EventLog</Name>

@@ -11,36 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Logging.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Logging.NLog", "ServiceStack.Logging.NLog\ServiceStack.Logging.NLog.csproj", "{6B31F200-073C-46D4-B389-05646E035939}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Logging.Elmah", "ServiceStack.Logging.Elmah\ServiceStack.Logging.Elmah.csproj", "{EE43BF1E-CF97-4215-A5A3-46D1C363F928}"
+EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6B31F200-073C-46D4-B389-05646E035939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B31F200-073C-46D4-B389-05646E035939}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6B31F200-073C-46D4-B389-05646E035939}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B31F200-073C-46D4-B389-05646E035939}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C44A6E80-326E-4036-8906-62E881F4727D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C44A6E80-326E-4036-8906-62E881F4727D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C44A6E80-326E-4036-8906-62E881F4727D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C44A6E80-326E-4036-8906-62E881F4727D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D920BA88-E394-4C75-94E3-78D7298A8457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D920BA88-E394-4C75-94E3-78D7298A8457}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D920BA88-E394-4C75-94E3-78D7298A8457}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D920BA88-E394-4C75-94E3-78D7298A8457}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DDDA27EC-5855-4E89-9971-C117EC08BDE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DDDA27EC-5855-4E89-9971-C117EC08BDE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DDDA27EC-5855-4E89-9971-C117EC08BDE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DDDA27EC-5855-4E89-9971-C117EC08BDE3}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ServiceStack.Logging.EventLog\ServiceStack.Logging.EventLog.csproj
-	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 6
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
@@ -62,7 +35,40 @@ Global
 		SccProjectName5 = Bbc.Ww.Services.Logging.EventLog
 		SccLocalPath5 = Bbc.Ww.Services.Logging.EventLog
 	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D920BA88-E394-4C75-94E3-78D7298A8457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D920BA88-E394-4C75-94E3-78D7298A8457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D920BA88-E394-4C75-94E3-78D7298A8457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D920BA88-E394-4C75-94E3-78D7298A8457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C44A6E80-326E-4036-8906-62E881F4727D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C44A6E80-326E-4036-8906-62E881F4727D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C44A6E80-326E-4036-8906-62E881F4727D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C44A6E80-326E-4036-8906-62E881F4727D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDDA27EC-5855-4E89-9971-C117EC08BDE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDDA27EC-5855-4E89-9971-C117EC08BDE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDDA27EC-5855-4E89-9971-C117EC08BDE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDDA27EC-5855-4E89-9971-C117EC08BDE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B31F200-073C-46D4-B389-05646E035939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B31F200-073C-46D4-B389-05646E035939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B31F200-073C-46D4-B389-05646E035939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B31F200-073C-46D4-B389-05646E035939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE43BF1E-CF97-4215-A5A3-46D1C363F928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE43BF1E-CF97-4215-A5A3-46D1C363F928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE43BF1E-CF97-4215-A5A3-46D1C363F928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE43BF1E-CF97-4215-A5A3-46D1C363F928}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = ServiceStack.Logging.EventLog\ServiceStack.Logging.EventLog.csproj
 	EndGlobalSection
 EndGlobal
