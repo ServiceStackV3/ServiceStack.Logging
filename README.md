@@ -10,12 +10,14 @@ Although log4net is the standard for logging in .NET, potential problems can ari
 * Potential conflicts can occur when different libraries have dependency on different versions of log4net (e.g. the 1.2.9 / 1.2.10 dependency problem).
 * You may want to use a different logging provider (i.e. network distributed logging)
 * You want your logging for Unit and Integration tests to redirect to the Console or Debug logger without any configuraiton.
+* Something better like [elmah](http://code.google.com/p/elmah/) can come along requiring a major rewrite to take advantage of it
 
 ServiceStack.Logging solves these problems by providing an implementation-free ILog interface that your application logic can bind to 
 where your Application Host project can bind to the concrete logging implementation at deploy or runtime.
 
 ServiceStack.Logging also includes adapters for the following logging providers:
 
+* Elmah
 * Log4Net 1.2.10+
 * Log4Net 1.2.9
 * EventLog
