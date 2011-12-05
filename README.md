@@ -18,6 +18,7 @@ where your Application Host project can bind to the concrete logging implementat
 ServiceStack.Logging also includes adapters for the following logging providers:
 
 * Elmah
+* NLog
 * Log4Net 1.2.10+
 * Log4Net 1.2.9
 * EventLog
