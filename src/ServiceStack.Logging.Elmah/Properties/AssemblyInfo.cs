@@ -6,11 +6,15 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ServiceStack.Logging.Elmah")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription(@"Provides Elmah logging integration for other ServiceStack projects
+        Includes: 
+            - ServiceStack.Logging.Elmah.dll
+        Dependencies:
+            - ServiceStack.Interfaces.dll")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ServiceStack")]
+[assembly: AssemblyCompany("Demis Bellot")]
 [assembly: AssemblyProduct("ServiceStack.Logging.Elmah")]
-[assembly: AssemblyCopyright("Copyright © ServiceStack 2011")]
+[assembly: AssemblyCopyright("Copyright © ServiceStack 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

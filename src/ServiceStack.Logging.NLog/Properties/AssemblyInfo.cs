@@ -6,13 +6,18 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ServiceStack.Logging.NLog")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription(@"Provides NLog logging integration for other ServiceStack projects
+        Includes: 
+            - ServiceStack.Logging.NLog.dll
+        Dependencies:
+            - ServiceStack.Interfaces.dll")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Demis Bellot")]
 [assembly: AssemblyProduct("ServiceStack.Logging.NLog")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
+[assembly: AssemblyCopyright("Copyright © ServiceStack 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
