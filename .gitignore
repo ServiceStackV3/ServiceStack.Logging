@@ -5,15 +5,17 @@ latest/
 /env-vars.bat
 *.suo
 #ignore thumbnails created by windows
-Thumbs.db
+[Tt]humbs.db
 #Ignore files build by Visual Studio
-*.obj
+*.[Oo]bj
 *.exe
 *.pdb
 *.user
 *.aps
 *.pch
 *.vspscc
+*.scc
+*.*scc
 *_i.c
 *_p.c
 *.ncb
@@ -21,7 +23,7 @@ Thumbs.db
 *.tlb
 *.tlh
 *.bak
-*.cache
+*.[Cc]ache
 *.ilk
 *.log
 [Bb]in
@@ -31,6 +33,73 @@ Thumbs.db
 *.resharper.user
 obj/
 [Rr]elease*/
-_ReSharper*/
+_[Rr]e[Ss]harper*/
+*.resharper
 [Tt]est[Rr]esult*
 App_Data/
+*.tli
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+*.opt
+*.plg
+ipch/
+Ankh.Load
+Ankh.NoLoad
+*.vshost.*
+*.FileListAbsolute.txt
+*.clw
+*.eto
+*.vsmdi
+*.dbmdl
+*.dbproj.schemaview
+*DXCore.Solution
+*.sln.docstates
+*.fbpInf
+lint.db
+
+#OS junk files
+*.DS_Store
+[Ii]ndex.dat
+[Ss]torage.dat
+
+#ASP.NET
+[Pp]recompiled[Ww]eb/
+UpgradeLog*.*
+_[Uu]pgradeReport_[Ff]iles
+*.[Pp]ublish.xml
+
+#Silverlight
+[Cc]lientBin/
+*.xap
+
+#WCF
+*.svclog
+
+#SSRS and SSMS
+*.rdl.data
+*.sqlsuo
+
+#TFS Files
+*.nlb
+
+#Other Source Control
+*.orig
+CVS/
+.svn
+
+# Office Temp Files
+~$*
+
+#NuGet
+packages/
+*.nupkg
+
+#Miscellaneous Files
+*.exe
+*.fb6lck
+*.fbl6
+*.patch
+*.sig
+*.tmp
+Backup*
