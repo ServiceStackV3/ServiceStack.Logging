@@ -14,27 +14,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Logging.Elmah", "ServiceStack.Logging.Elmah\ServiceStack.Logging.Elmah.csproj", "{EE43BF1E-CF97-4215-A5A3-46D1C363F928}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://wwldbms1021:8080/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Bbc.Ww.Services.Logging\\Bbc.Ww.Services.Logging.csproj
-		SccProjectName1 = Bbc.Ww.Services.Logging
-		SccLocalPath1 = Bbc.Ww.Services.Logging
-		SccProjectUniqueName2 = Bbc.Ww.Services.Logging.Log4Net\\Bbc.Ww.Services.Logging.Log4Net.csproj
-		SccProjectName2 = Bbc.Ww.Services.Logging.Log4Net
-		SccLocalPath2 = Bbc.Ww.Services.Logging.Log4Net
-		SccProjectUniqueName3 = Bbc.Ww.Services.Logging.Log4Netv129\\Bbc.Ww.Services.Logging.Log4Netv129.csproj
-		SccProjectName3 = Bbc.Ww.Services.Logging.Log4Netv129
-		SccLocalPath3 = Bbc.Ww.Services.Logging.Log4Netv129
-		SccProjectUniqueName4 = Bbc.Ww.Services.Logging.Tests\\Bbc.Ww.Services.Logging.Tests.csproj
-		SccProjectName4 = Bbc.Ww.Services.Logging.Tests
-		SccLocalPath4 = Bbc.Ww.Services.Logging.Tests
-		SccProjectUniqueName5 = Bbc.Ww.Services.Logging.EventLog\\Bbc.Ww.Services.Logging.EventLog.csproj
-		SccProjectName5 = Bbc.Ww.Services.Logging.EventLog
-		SccLocalPath5 = Bbc.Ww.Services.Logging.EventLog
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
