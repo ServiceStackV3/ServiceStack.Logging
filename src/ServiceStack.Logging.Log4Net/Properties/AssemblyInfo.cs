@@ -6,13 +6,18 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ServiceStack.Logging.Log4Net")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription(@"Provides log4net logging integration for other ServiceStack projects
+        Includes: 
+            - ServiceStack.Logging.Log4Net.dll
+        Dependencies:
+            - ServiceStack.Interfaces.dll")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ServiceStack")]
+[assembly: AssemblyCompany("Demis Bellot")]
 [assembly: AssemblyProduct("ServiceStack.Logging.Log4Net")]
-[assembly: AssemblyCopyright("Copyright © ServiceStack 2008")]
+[assembly: AssemblyCopyright("Copyright © ServiceStack 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
