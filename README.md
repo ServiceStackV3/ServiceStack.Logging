@@ -1,5 +1,23 @@
-## ServiceStack.Logging an implementation-free logging interface for your app logic to bind to
+## An implementation-free logging API for .Net
+
 For twitter updates follow <a href="http://twitter.com/demisbellot">@demisbellot</a> or <a href="http://twitter.com/servicestack">@ServiceStack</a>
+
+**ServiceStack.Logging** is an implementation and dependency-free logging API with adapters for all of .NET's popular logging providers.
+It allows your business logic to bind to an easily-mockable and testable dependency-free interface whilst providing the flexibility to switch logging providers at runtime.
+
+## Download on NuGet
+
+Currently there are 5 different .NET logging providers available on NuGet:
+
+#### Install-Package [ServiceStack.Logging.NLog](https://nuget.org/packages/ServiceStack.Logging.NLog)
+#### Install-Package [ServiceStack.Logging.Elmah](https://nuget.org/packages/ServiceStack.Logging.Elmah)
+#### Install-Package [ServiceStack.Logging.Log4Net](https://nuget.org/packages/ServiceStack.Logging.Log4Net)
+#### Install-Package [ServiceStack.Logging.Log4Netv129](https://nuget.org/packages/ServiceStack.Logging.Log4Netv129)
+#### Install-Package [ServiceStack.Logging.EventLog](https://nuget.org/packages/ServiceStack.Logging.EventLog)
+
+Note: The ConsoleLogger and DebugLogger and are already built-in and bind to .NET Framework's Console and Debug loggers
+
+-----
 
 Even in the spirit of **Bind to interfaces, not implemenations**, many .NET projects still have
 a hard dependency to [log4net](http://logging.apache.org/log4net/index.html). 
