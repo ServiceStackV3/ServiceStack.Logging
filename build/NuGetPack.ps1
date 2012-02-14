@@ -1,7 +1,7 @@
 param(
 	[Parameter(Mandatory = $true, ValueFromPipeline = $true)]
 	[string]
-	$apiKey
+	$apiKeys
 )
 
 del *.nupkg
