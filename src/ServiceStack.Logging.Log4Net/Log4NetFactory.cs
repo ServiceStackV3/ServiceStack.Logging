@@ -1,12 +1,12 @@
 using System;
-using ServiceStack.Logging;
+using System.IO;
 
 namespace ServiceStack.Logging.Log4Net
 {
     /// <summary>
     /// ILogFactory that creates an Log4Net ILog logger
     /// </summary>
-	public class Log4NetFactory : ServiceStack.Logging.ILogFactory
+	public class Log4NetFactory : ILogFactory
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Log4NetFactory"/> class.
@@ -23,6 +23,23 @@ namespace ServiceStack.Logging.Log4Net
             {
                 log4net.Config.XmlConfigurator.Configure();
             }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Log4NetFactory"/> class.
+        /// </summary>
+        /// <param name="log4NetConfigurationFile">The log4 net configuration file to load and watch. If not found configures from App.Config.</param>
+        public Log4NetFactory(string log4NetConfigurationFile)
+        {
+            //Restart logging if necessary
+            log4net.Repository.ILoggerRepository rootRepository = log4net.LogManager.GetRepository();
+            if (rootRepository != null)
+                rootRepository.Shutdown();
+
+            if (File.Exists(log4NetConfigurationFile))
+                log4net.Config.XmlConfigurator.ConfigureAndWatch(new FileInfo(log4NetConfigurationFile));
+            else
+                log4net.Config.XmlConfigurator.Configure();
         }
 
         /// <summary>
