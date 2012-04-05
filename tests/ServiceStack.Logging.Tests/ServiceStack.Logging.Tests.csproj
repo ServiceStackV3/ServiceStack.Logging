@@ -158,6 +158,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="log4net.Test.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
