@@ -1,18 +1,17 @@
 using System;
-using ServiceStack.Logging;
 
 namespace ServiceStack.Logging.Log4Net
 {
     /// <summary>
     /// Wrapper over the log4net.1.2.10 and above logger 
     /// </summary>
-	public class Log4NetLogger : ServiceStack.Logging.ILog
+	public class Log4NetLogger : ILog
     {
-        private readonly log4net.ILog log;
+        private readonly log4net.ILog _log;
 
         public Log4NetLogger(string typeName)
         {
-            log = log4net.LogManager.GetLogger(typeName);
+            _log = log4net.LogManager.GetLogger(typeName);
         }
 
         /// <summary>
@@ -21,10 +20,10 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="type">The type.</param>
         public Log4NetLogger(Type type)
         {
-            log = log4net.LogManager.GetLogger(type);
+            _log = log4net.LogManager.GetLogger(type);
         }
 
-		public bool IsDebugEnabled { get { return log.IsDebugEnabled; } }
+		public bool IsDebugEnabled { get { return _log.IsDebugEnabled; } }
 	
 		/// <summary>
         /// Logs a Debug message.
@@ -32,7 +31,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="message">The message.</param>
         public void Debug(object message)
         {
-            log.Debug(message);
+            if (_log.IsDebugEnabled)
+                _log.Debug(message);
         }
 
         /// <summary>
@@ -42,7 +42,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="exception">The exception.</param>
         public void Debug(object message, Exception exception)
         {
-            log.Debug(message, exception);
+            if (_log.IsDebugEnabled)
+                _log.Debug(message, exception);
         }
 
         /// <summary>
@@ -52,7 +53,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="args">The args.</param>
         public void DebugFormat(string format, params object[] args)
         {
-            log.DebugFormat(format, args);
+            if (_log.IsDebugEnabled)
+                _log.DebugFormat(format, args);
         }
 
         /// <summary>
@@ -61,7 +63,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="message">The message.</param>
         public void Error(object message)
         {
-            log.Error(message);
+            if (_log.IsErrorEnabled)
+                _log.Error(message);
         }
 
         /// <summary>
@@ -71,7 +74,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="exception">The exception.</param>
         public void Error(object message, Exception exception)
         {
-            log.Error(message, exception);
+            if (_log.IsErrorEnabled)
+                _log.Error(message, exception);
         }
 
         /// <summary>
@@ -81,7 +85,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="args">The args.</param>
         public void ErrorFormat(string format, params object[] args)
         {
-            log.ErrorFormat(format, args);
+            if (_log.IsErrorEnabled)
+                _log.ErrorFormat(format, args);
         }
 
         /// <summary>
@@ -90,7 +95,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="message">The message.</param>
         public void Fatal(object message)
         {
-            log.Fatal(message);
+            if (_log.IsFatalEnabled)
+                _log.Fatal(message);
         }
 
         /// <summary>
@@ -100,7 +106,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="exception">The exception.</param>
         public void Fatal(object message, Exception exception)
         {
-            log.Fatal(message, exception);
+            if (_log.IsFatalEnabled)
+                _log.Fatal(message, exception);
         }
 
         /// <summary>
@@ -110,7 +117,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="args">The args.</param>
         public void FatalFormat(string format, params object[] args)
         {
-            log.FatalFormat(format, args);
+            if (_log.IsFatalEnabled)
+                _log.FatalFormat(format, args);
         }
 
         /// <summary>
@@ -119,7 +127,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="message">The message.</param>
         public void Info(object message)
         {
-            log.Info(message);
+            if (_log.IsInfoEnabled)
+                _log.Info(message);
         }
 
         /// <summary>
@@ -129,7 +138,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="exception">The exception.</param>
         public void Info(object message, Exception exception)
         {
-            log.Info(message, exception);
+            if (_log.IsInfoEnabled)
+                _log.Info(message, exception);
         }
 
         /// <summary>
@@ -139,7 +149,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="args">The args.</param>
         public void InfoFormat(string format, params object[] args)
         {
-            log.InfoFormat(format, args);
+            if (_log.IsInfoEnabled)
+                _log.InfoFormat(format, args);
         }
 
         /// <summary>
@@ -148,7 +159,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="message">The message.</param>
         public void Warn(object message)
         {
-            log.Warn(message);
+            if (_log.IsWarnEnabled)
+                _log.Warn(message);
         }
 
         /// <summary>
@@ -158,7 +170,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="exception">The exception.</param>
         public void Warn(object message, Exception exception)
         {
-            log.Warn(message, exception);
+            if (_log.IsWarnEnabled)
+                _log.Warn(message, exception);
         }
 
         /// <summary>
@@ -168,7 +181,8 @@ namespace ServiceStack.Logging.Log4Net
         /// <param name="args">The args.</param>
         public void WarnFormat(string format, params object[] args)
         {
-            log.WarnFormat(format, args);
+            if (_log.IsWarnEnabled)
+                _log.WarnFormat(format, args);
         }
     }
 }
