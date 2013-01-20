@@ -7,13 +7,14 @@ It allows your business logic to bind to an easily-mockable and testable depende
 
 ## Download on NuGet
 
-Currently there are 5 different .NET logging providers available on NuGet:
+Currently there are 6 different .NET logging providers available on NuGet:
 
 #### Install-Package [ServiceStack.Logging.NLog](https://nuget.org/packages/ServiceStack.Logging.NLog)
 #### Install-Package [ServiceStack.Logging.Elmah](https://nuget.org/packages/ServiceStack.Logging.Elmah)
 #### Install-Package [ServiceStack.Logging.Log4Net](https://nuget.org/packages/ServiceStack.Logging.Log4Net)
 #### Install-Package [ServiceStack.Logging.Log4Netv129](https://nuget.org/packages/ServiceStack.Logging.Log4Netv129)
 #### Install-Package [ServiceStack.Logging.EventLog](https://nuget.org/packages/ServiceStack.Logging.EventLog)
+#### Install-Package [ServiceStack.Logging.EntLib5](https://nuget.org/packages/ServiceStack.Logging.EntLib5)
 
 Note: The ConsoleLogger and DebugLogger and are already built-in and bind to .NET Framework's Console and Debug loggers
 
@@ -39,6 +40,7 @@ ServiceStack.Logging also includes adapters for the following logging providers:
 * NLog
 * Log4Net 1.2.10+
 * Log4Net 1.2.9
+* Enterprise Library 5.0
 * EventLog
 * Console Log
 * Debug Log
