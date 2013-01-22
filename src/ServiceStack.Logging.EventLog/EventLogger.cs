@@ -57,9 +57,9 @@ namespace ServiceStack.Logging.EventLog
             StringBuilder sb = new StringBuilder();
 
             System.Diagnostics.EventLog eventLogger = new System.Diagnostics.EventLog();
-            if (!System.Diagnostics.EventLog.SourceExists(eventLogName))
+            if (!System.Diagnostics.EventLog.SourceExists(eventLogSource))
             {
-                System.Diagnostics.EventLog.CreateEventSource(eventLogName, eventLogSource);
+                System.Diagnostics.EventLog.CreateEventSource(eventLogSource, eventLogName);
             }
 
             sb.Append(message).Append(NEW_LINE);
