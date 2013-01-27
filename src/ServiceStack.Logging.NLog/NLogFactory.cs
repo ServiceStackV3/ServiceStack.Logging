@@ -6,7 +6,7 @@ namespace ServiceStack.Logging.NLogger
     /// <summary>
     /// ILogFactory that creates an NLog ILog logger
     /// </summary>
-	public class NLogFactory : ServiceStack.Logging.ILogFactory
+    public class NLogFactory : ServiceStack.Logging.ILogFactory
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NLogFactory"/> class.
