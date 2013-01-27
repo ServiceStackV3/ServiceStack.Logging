@@ -1,4 +1,5 @@
 using System;
+using NLog;
 using ServiceStack.Logging;
 
 namespace ServiceStack.Logging.NLogger
@@ -6,7 +7,7 @@ namespace ServiceStack.Logging.NLogger
     /// <summary>
     /// Wrapper over the NLog 2.0 beta and above logger 
     /// </summary>
-	public class NLogLogger : ServiceStack.Logging.ILog
+    public class NLogLogger : ServiceStack.Logging.ILog
     {
         private readonly NLog.Logger log;
 
@@ -21,18 +22,29 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="type">The type.</param>
         public NLogLogger(Type type)
         {
-            log = NLog.LogManager.GetLogger(type.Name);
+            log = NLog.LogManager.GetLogger(UseFullTypeNames ? type.FullName : type.Name);
         }
 
-		public bool IsDebugEnabled { get { return log.IsDebugEnabled; } }
-	
-		/// <summary>
+        public static bool UseFullTypeNames { get; set; }
+
+        public bool IsDebugEnabled { get { return log.IsDebugEnabled; } }
+
+        public bool IsInfoEnabled { get { return log.IsInfoEnabled; } }
+
+        public bool IsWarnEnabled { get { return log.IsWarnEnabled; } }
+
+        public bool IsErrorEnabled { get { return log.IsErrorEnabled; } }
+
+        public bool IsFatalEnabled { get { return log.IsFatalEnabled; } }
+    
+        /// <summary>
         /// Logs a Debug message.
         /// </summary>
         /// <param name="message">The message.</param>
         public void Debug(object message)
         {
-            log.Debug(message);
+            if (IsDebugEnabled)
+                Write(LogLevel.Debug, message.ToString());
         }
 
         /// <summary>
@@ -42,7 +54,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="exception">The exception.</param>
         public void Debug(object message, Exception exception)
         {
-            log.DebugException(message.ToString(), exception);
+            if(IsDebugEnabled)
+                Write(LogLevel.Debug,exception,message.ToString());
         }
 
         /// <summary>
@@ -52,7 +65,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="args">The args.</param>
         public void DebugFormat(string format, params object[] args)
         {
-            log.Debug(format, args);
+            if (IsDebugEnabled)
+                Write(LogLevel.Debug, format, args);
         }
 
         /// <summary>
@@ -61,7 +75,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="message">The message.</param>
         public void Error(object message)
         {
-            log.Error(message);
+            if (IsErrorEnabled)
+                Write(LogLevel.Error,message.ToString());
         }
 
         /// <summary>
@@ -71,7 +86,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="exception">The exception.</param>
         public void Error(object message, Exception exception)
         {
-            log.ErrorException(message.ToString(), exception);
+            if (IsErrorEnabled)
+                Write(LogLevel.Error, exception, message.ToString());
         }
 
         /// <summary>
@@ -81,7 +97,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="args">The args.</param>
         public void ErrorFormat(string format, params object[] args)
         {
-            log.Error(format, args);
+            if (IsErrorEnabled)
+                Write(LogLevel.Error,format,args);
         }
 
         /// <summary>
@@ -90,7 +107,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="message">The message.</param>
         public void Fatal(object message)
         {
-            log.Fatal(message);
+            if (IsFatalEnabled)
+                Write(LogLevel.Fatal,message.ToString());
         }
 
         /// <summary>
@@ -100,7 +118,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="exception">The exception.</param>
         public void Fatal(object message, Exception exception)
         {
-            log.FatalException(message.ToString(), exception);
+            if (IsFatalEnabled)
+                Write(LogLevel.Fatal, exception, message.ToString());
         }
 
         /// <summary>
@@ -110,7 +129,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="args">The args.</param>
         public void FatalFormat(string format, params object[] args)
         {
-            log.Fatal(format, args);
+            if (IsFatalEnabled)
+                Write(LogLevel.Fatal, format, args);
         }
 
         /// <summary>
@@ -119,7 +139,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="message">The message.</param>
         public void Info(object message)
         {
-            log.Info(message);
+            if (IsInfoEnabled)
+                Write(LogLevel.Info,message.ToString());
         }
 
         /// <summary>
@@ -129,7 +150,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="exception">The exception.</param>
         public void Info(object message, Exception exception)
         {
-            log.InfoException(message.ToString(), exception);
+            if (IsInfoEnabled)
+                Write(LogLevel.Info,exception,message.ToString());
         }
 
         /// <summary>
@@ -139,7 +161,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="args">The args.</param>
         public void InfoFormat(string format, params object[] args)
         {
-            log.Info(format, args);
+            if (IsInfoEnabled)
+                Write(LogLevel.Info, format, args);
         }
 
         /// <summary>
@@ -148,7 +171,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="message">The message.</param>
         public void Warn(object message)
         {
-            log.Warn(message);
+            if (IsWarnEnabled)
+                Write(LogLevel.Warn,message.ToString());
         }
 
         /// <summary>
@@ -158,7 +182,8 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="exception">The exception.</param>
         public void Warn(object message, Exception exception)
         {
-            log.WarnException(message.ToString(), exception);
+            if (IsWarnEnabled)
+                Write(LogLevel.Warn,exception,message.ToString());
         }
 
         /// <summary>
@@ -168,7 +193,21 @@ namespace ServiceStack.Logging.NLogger
         /// <param name="args">The args.</param>
         public void WarnFormat(string format, params object[] args)
         {
-            log.Warn(format, args);
+            if (IsWarnEnabled)
+                Write(LogLevel.Warn, format, args);
+        }
+
+        private void Write(LogLevel level, string format, params object[] args)
+        {
+            //preserve call site info - see here: http://stackoverflow.com/questions/3947136/problem-matching-specific-nlog-logger-name
+            var logEventInfo = new LogEventInfo(level, log.Name, null, format, args);
+            log.Log(typeof(NLogLogger), logEventInfo);
+        }
+
+        private void Write(LogLevel level, Exception exception, string format, params object[] args)
+        {
+            var exceptionEventInfo = new LogEventInfo(level, log.Name, null, format, args, exception);
+            log.Log(typeof(NLogLogger), exceptionEventInfo);
         }
     }
 }
