@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kevin Howard")]
 [assembly: AssemblyProduct("ServiceStack.Logging.EntLib5")]
-[assembly: AssemblyCopyright("Copyright © ServiceStack 2012")]
+[assembly: AssemblyCopyright("Copyright © ServiceStack 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
