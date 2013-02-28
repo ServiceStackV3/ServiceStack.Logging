@@ -14,7 +14,7 @@ Currently there are 6 different .NET logging providers available on NuGet:
 #### Install-Package [ServiceStack.Logging.Log4Net](https://nuget.org/packages/ServiceStack.Logging.Log4Net)
 #### Install-Package [ServiceStack.Logging.Log4Netv129](https://nuget.org/packages/ServiceStack.Logging.Log4Netv129)
 #### Install-Package [ServiceStack.Logging.EventLog](https://nuget.org/packages/ServiceStack.Logging.EventLog)
-#### Install-Package [ServiceStack.Logging.EntLib5](https://nuget.org/packages/ServiceStack.Logging.EntLib5)
+#### Install-Package [ServiceStack.Logging.EnterpriseLibrary5](https://nuget.org/packages/ServiceStack.Logging.EnterpriseLibrary5/)
 
 Note: The ConsoleLogger and DebugLogger and are already built-in and bind to .NET Framework's Console and Debug loggers
 
