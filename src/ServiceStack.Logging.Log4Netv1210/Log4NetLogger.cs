@@ -32,7 +32,7 @@ namespace ServiceStack.Logging.Log4Net
         public void Debug(object message)
         {
             if (_log.IsDebugEnabled)
-                _log.Debug(message);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Debug, message, null);
         }
 
         /// <summary>
@@ -43,8 +43,8 @@ namespace ServiceStack.Logging.Log4Net
         public void Debug(object message, Exception exception)
         {
             if (_log.IsDebugEnabled)
-                _log.Debug(message, exception);
-        }
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Debug, message, exception);
+		}
 
         /// <summary>
         /// Logs a Debug format message.
@@ -54,7 +54,7 @@ namespace ServiceStack.Logging.Log4Net
         public void DebugFormat(string format, params object[] args)
         {
             if (_log.IsDebugEnabled)
-                _log.DebugFormat(format, args);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Debug, String.Format (format, args), null);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace ServiceStack.Logging.Log4Net
         public void Error(object message)
         {
             if (_log.IsErrorEnabled)
-                _log.Error(message);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Error, message, null);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace ServiceStack.Logging.Log4Net
         public void Error(object message, Exception exception)
         {
             if (_log.IsErrorEnabled)
-                _log.Error(message, exception);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Error, message, exception);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace ServiceStack.Logging.Log4Net
         public void ErrorFormat(string format, params object[] args)
         {
             if (_log.IsErrorEnabled)
-                _log.ErrorFormat(format, args);
+            _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Error, String.Format (format, args), null);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace ServiceStack.Logging.Log4Net
         public void Fatal(object message)
         {
             if (_log.IsFatalEnabled)
-                _log.Fatal(message);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Fatal, message, null);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace ServiceStack.Logging.Log4Net
         public void Fatal(object message, Exception exception)
         {
             if (_log.IsFatalEnabled)
-                _log.Fatal(message, exception);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Fatal, message, exception);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace ServiceStack.Logging.Log4Net
         public void FatalFormat(string format, params object[] args)
         {
             if (_log.IsFatalEnabled)
-                _log.FatalFormat(format, args);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Fatal, String.Format(format, args), null);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace ServiceStack.Logging.Log4Net
         public void Info(object message)
         {
             if (_log.IsInfoEnabled)
-                _log.Info(message);
+				_log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Info, message, null);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace ServiceStack.Logging.Log4Net
         public void Info(object message, Exception exception)
         {
             if (_log.IsInfoEnabled)
-                _log.Info(message, exception);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Info, message, exception);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace ServiceStack.Logging.Log4Net
         public void InfoFormat(string format, params object[] args)
         {
             if (_log.IsInfoEnabled)
-                _log.InfoFormat(format, args);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Info, String.Format (format, args), null);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace ServiceStack.Logging.Log4Net
         public void Warn(object message)
         {
             if (_log.IsWarnEnabled)
-                _log.Warn(message);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Warn, message, null);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace ServiceStack.Logging.Log4Net
         public void Warn(object message, Exception exception)
         {
             if (_log.IsWarnEnabled)
-                _log.Warn(message, exception);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Warn, message, exception);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace ServiceStack.Logging.Log4Net
         public void WarnFormat(string format, params object[] args)
         {
             if (_log.IsWarnEnabled)
-                _log.WarnFormat(format, args);
+                _log.Logger.Log(typeof(Log4NetLogger), log4net.Core.Level.Warn, String.Format(format, args), null);
         }
     }
 }
