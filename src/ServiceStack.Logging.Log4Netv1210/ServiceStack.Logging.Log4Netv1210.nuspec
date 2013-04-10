@@ -16,7 +16,7 @@
     <language>en-US</language>
     <copyright>servicestack.net 2012 and contributors</copyright>
     <dependencies>
-      <dependency id="log4net" version="1.2.10" />
+      <dependency id="log4net" version="[1.2.10]" />
       <dependency id="ServiceStack.Common" />
     </dependencies>
   </metadata>
