@@ -43,37 +43,67 @@ namespace ServiceStack.Logging.Elmah
 
 		public void Error(object message, Exception exception)
 		{
-			ErrorLog.GetDefault(HttpContext.Current).Log(new Error(exception, HttpContext.Current));
+			try {
+				ErrorLog.GetDefault(HttpContext.Current).Log(new Error(exception, HttpContext.Current));
+			}
+			catch {
+				ErrorLog.GetDefault(null).Log(new Error(exception));
+			}
 			log.Error(message, exception);
 		}
 
 		public void Error(object message)
 		{
-			ErrorLog.GetDefault(HttpContext.Current).Log(new Error(new System.ApplicationException(message.ToString()), HttpContext.Current));
+			try {
+				ErrorLog.GetDefault(HttpContext.Current).Log(new Error(new System.ApplicationException(message.ToString()), HttpContext.Current));
+			}
+			catch {
+				ErrorLog.GetDefault(null).Log(new Error(new System.ApplicationException(message.ToString())));
+			}
 			log.Error(message);
 		}
 
 		public void ErrorFormat(string format, params object[] args)
 		{
-			ErrorLog.GetDefault(HttpContext.Current).Log(new Error(new System.ApplicationException(string.Format(format, args)), HttpContext.Current));
+			try {
+				ErrorLog.GetDefault(HttpContext.Current).Log(new Error(new System.ApplicationException(string.Format(format, args)), HttpContext.Current));
+			}
+			catch {
+				ErrorLog.GetDefault(null).Log(new Error(new System.ApplicationException(string.Format(format, args))));
+			}
 			log.ErrorFormat(format, args);
 		}
 
 		public void Fatal(object message, Exception exception)
 		{
-			ErrorLog.GetDefault(HttpContext.Current).Log(new Error(exception, HttpContext.Current));
+			try {
+				ErrorLog.GetDefault(HttpContext.Current).Log(new Error(exception, HttpContext.Current));
+			}
+			catch {
+				ErrorLog.GetDefault(null).Log(new Error(exception));
+			}
 			log.Fatal(message, exception);
 		}
 
 		public void Fatal(object message)
 		{
-			ErrorLog.GetDefault(HttpContext.Current).Log(new Error(new System.ApplicationException(message.ToString()), HttpContext.Current));
+			try {
+				ErrorLog.GetDefault(HttpContext.Current).Log(new Error(new System.ApplicationException(message.ToString()), HttpContext.Current));
+			}
+			catch {
+				ErrorLog.GetDefault(null).Log(new Error(new System.ApplicationException(message.ToString())));
+			}
 			log.Fatal(message);
 		}
 
 		public void FatalFormat(string format, params object[] args)
 		{
-			ErrorLog.GetDefault(HttpContext.Current).Log(new Error(new System.ApplicationException(string.Format(format, args)), HttpContext.Current));
+			try {
+				ErrorLog.GetDefault(HttpContext.Current).Log(new Error(new System.ApplicationException(string.Format(format, args)), HttpContext.Current));
+			}
+			catch {
+				ErrorLog.GetDefault(null).Log(new Error(new System.ApplicationException(string.Format(format, args))));
+			}
 			log.FatalFormat(format, args);
 		}
 
