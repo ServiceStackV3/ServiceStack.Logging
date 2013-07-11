@@ -20,7 +20,8 @@ namespace ServiceStack.Logging.EventLog
         /// </summary>
         /// <param name="eventLogName">Name of the event log.</param>
         /// <param name="eventLogSource">The event log source.</param>
-        public EventLogger(string eventLogName, string eventLogSource)
+        /// <param name="eventLogMessage">The event message.</param>
+        public EventLogger(string eventLogName, string eventLogSource, string eventLogMessage = ERROR_MSG)
         {
             if (string.IsNullOrEmpty(eventLogName))
             {
@@ -30,8 +31,13 @@ namespace ServiceStack.Logging.EventLog
             {
                 throw new ArgumentNullException("eventLogSource");
             }
+            if (string.IsNullOrEmpty(eventLogMessage))
+            {
+                throw new ArgumentNullException("eventLogMessage");
+            }
             this.eventLogName = eventLogName;
             this.eventLogSource = eventLogSource;
+            this.eventLogMessage = eventLogMessage;
         }
 
 		public bool IsDebugEnabled { get { return true; } }
@@ -75,7 +81,7 @@ namespace ServiceStack.Logging.EventLog
             }
 
             eventLogger.Source = eventLogName;
-            eventLogger.WriteEntry(String.Format(ERROR_MSG, eventLogSource, sb), eventLogType);
+            eventLogger.WriteEntry(String.Format(eventLogMessage, eventLogSource, sb), eventLogType);
         }
 
         /// <summary>
