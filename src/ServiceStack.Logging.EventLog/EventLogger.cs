@@ -74,8 +74,8 @@ namespace ServiceStack.Logging.EventLog
                 execption = execption.InnerException;
             }
 
-            eventLogger.Source = eventLogName;
-            eventLogger.WriteEntry(String.Format(ERROR_MSG, eventLogSource, sb), eventLogType);
+            eventLogger.Source = eventLogSource;
+            eventLogger.WriteEntry(String.Format(ERROR_MSG, eventLogName, sb), eventLogType);
         }
 
         /// <summary>
