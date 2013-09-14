@@ -60,7 +60,7 @@
   </Target>
 
   <Target Name="BuildSolutions">
-    <MSBuild Projects="$(BuildSolutionDir)/src/ServiceStack.Contrib.sln" Targets="Build"
+    <MSBuild Projects="$(BuildSolutionDir)/src/ServiceStack.Logging.sln" Targets="Build"
       Properties="Configuration=$(Configuration)" />
   </Target>
 
