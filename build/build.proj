@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Default"
+    xmlns='http://schemas.microsoft.com/developer/msbuild/2003' ToolsVersion="4.0">
+  <Import Project="$(MSBuildProjectDirectory)/build.tasks" />
+
+  <PropertyGroup>
+    <MajorVersion Condition="$(MajorVersion) == ''">3</MajorVersion>
+    <MinorVersion Condition="$(MinorVersion) == ''">9</MinorVersion>
+    <PatchVersion Condition="$(PatchVersion) == ''">$(BUILD_NUMBER)</PatchVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BuildSolutionDir>$(MSBuildProjectDirectory)/..</BuildSolutionDir>
+    <SrcDir>$(BuildSolutionDir)/src</SrcDir>
+    <Configuration Condition="$(Configuration) == ''">Release</Configuration>
+    <NuGetPath>$(BuildSolutionDir)/src/.nuget/nuget.exe</NuGetPath>
+    <NuGetPackageDir>$(BuildSolutionDir)/NuGet/</NuGetPackageDir>
+    <Version>$(MajorVersion).$(MinorVersion).$(PatchVersion).0</Version>
+    <UnstableTag Condition="$(RELEASE) == ''">-unstable</UnstableTag>
+    <PackageVersion>$(MajorVersion).$(MinorVersion).$(PatchVersion)$(UnstableTag)</PackageVersion>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <NugetPackageFilesToDelete Include="$(NuGetPackageDir)/*.nupkg"/>
+  </ItemGroup>
+
+
+  <PropertyGroup>
+    <DoBuildSolutionsDependsOn>
+      BeforeBuildSolutions;
+      BuildSolutions
+    </DoBuildSolutionsDependsOn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <NugetPackageFilesToDelete Include="$(NuGetPackageDir)/*.nupkg"/>
+  </ItemGroup>
+
+  <Target Name="Default" DependsOnTargets="$(DoBuildSolutionsDependsOn)" />
+
+  <Target Name="TeamCityBuild">
+    <!--<Copy SourceFiles="$(BuildSolutionDir)/tests/ServiceStack.Common.Tests/ci.app.config" DestinationFiles="$(BuildSolutionDir)/tests/ServiceStack.Common.Tests/app.config" />-->
+    <CallTarget Targets="Default" />
+  </Target>
+
+  <Target Name="Default" DependsOnTargets="$(DoBuildSolutionsDependsOn)" />
+
+  <Target Name="BeforeBuildSolutions">
+    <Message Text="*****Before building solution*****" Importance="high"/>
+    <!--<Copy SourceFiles="Test/ci.app.config" DestinationFiles="Test/app.config" />-->
+  </Target>
+
+  <Target Name="UnitTestsWithoutIntegration" DependsOnTargets="$(DoBuildSolutionsDependsOn)">
+    <!--<Exec Command="$(BuildSolutionDir)/lib/tests/nunit-console-x86.exe /exclude:Integration $(BuildSolutionDir)/tests/ServiceStack.Redis.Tests/bin/Debug/ServiceStack.Redis.Tests.dll"/>-->
+  </Target>
+
+  <Target Name="UnitTests" DependsOnTargets="$(DoBuildSolutionsDependsOn)">
+    <Exec Command="$(BuildSolutionDir)/lib/tests/nunit-console-x86.exe $(BuildSolutionDir)/tests/ServiceStack.Logging.Tests/bin/$(Configuration)/ServiceStack.Logging.Tests.dll"/>
+  </Target>
+
+  <Target Name="BuildSolutions">
+    <MSBuild Projects="$(BuildSolutionDir)/src/ServiceStack.Logging.sln" Targets="Build"
+      Properties="Configuration=$(Configuration)" />
+  </Target>
+
+  <Target Name="NuGetPack">
+
+    <!-- Update Version -->
+    <ItemGroup>
+        <RegexTransform Include="$(SrcDir)/**/AssemblyInfo.cs">
+            <Find>\d+\.\d+\.\d+\.\d+</Find>
+            <ReplaceWith>$(Version)</ReplaceWith>
+        </RegexTransform>
+    </ItemGroup>
+
+    <RegexTransform Items="@(RegexTransform)" />
+
+    <Delete Files="@(NugetPackageFilesToDelete)" />
+
+    <ItemGroup>
+      <ElmahFiles Include="$(SrcDir)/ServiceStack.Logging.Elmah/bin/$(Configuration)/ServiceStack.Logging.Elmah.*"></ElmahFiles>
+
+      <EntLib5Files Include="$(SrcDir)/ServiceStack.Logging.EntLib5/bin/$(Configuration)/ServiceStack.Logging.EntLib5.*"></EntLib5Files>
+
+      <EventLogFiles Include="$(SrcDir)/ServiceStack.Logging.EventLog/bin/$(Configuration)/ServiceStack.Logging.EventLog.*"></EventLogFiles>
+
+      <Log4NetFiles Include="$(SrcDir)/ServiceStack.Logging.Log4Net/bin/$(Configuration)/ServiceStack.Logging.Log4Net.*"></Log4NetFiles>
+
+      <Log4Netv1210Files Include="$(SrcDir)/ServiceStack.Logging.Log4Netv1210/bin/$(Configuration)/ServiceStack.Logging.Log4Netv1210.*"></Log4Netv1210Files>
+
+      <Log4Netv129Files Include="$(SrcDir)/ServiceStack.Logging.Log4Netv129/bin/$(Configuration)/ServiceStack.Logging.Log4Netv129.*"></Log4Netv129Files>
+
+      <NLogFiles Include="$(SrcDir)/ServiceStack.Logging.NLog/bin/$(Configuration)/ServiceStack.Logging.NLog.*"></NLogFiles>
+    </ItemGroup>
+
+    <!-- ServiceStack.Logging.Elmah -->
+
+    <MSBuild Projects="$(SrcDir)/ServiceStack.Logging.Elmah/ServiceStack.Logging.Elmah.csproj"
+             Targets="Build"
+             Properties="Version=$(PackageVersion);Configuration=$(Configuration)" />
+
+    <MakeDir Directories="$(NuGetPackageDir)/ServiceStack.Logging.Elmah/lib/net35" Condition="!Exists('$(NuGetPackageDir)/ServiceStack.Logging.Elmah/lib/net35')" />
+    <Copy SourceFiles="%(ElmahFiles.Identity)" DestinationFolder="$(NuGetPackageDir)/ServiceStack.Logging.Elmah/lib/net35" />
+
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(NuGetPackageDir)/ServiceStack.Logging.Elmah/servicestack.logging.elmah.nuspec&quot; -OutputDirectory &quot;$(NuGetPackageDir)&quot; -Version $(PackageVersion) -Symbols"
+            LogStandardErrorAsError="true" />
+
+    <!-- ServiceStack.Logging.EntLib5 -->
+
+    <MSBuild Projects="$(SrcDir)/ServiceStack.Logging.EntLib5/ServiceStack.Logging.EntLib5.csproj"
+             Targets="Build"
+             Properties="Version=$(PackageVersion);Configuration=$(Configuration)" />
+
+    <MakeDir Directories="$(NuGetPackageDir)/ServiceStack.Logging.EntLib5/lib/net35" Condition="!Exists('$(NuGetPackageDir)/ServiceStack.Logging.EntLib5/lib/net35')" />
+    <Copy SourceFiles="%(EntLib5Files.Identity)" DestinationFolder="$(NuGetPackageDir)/ServiceStack.Logging.EntLib5/lib/net35" />
+
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(NuGetPackageDir)/ServiceStack.Logging.EntLib5/servicestack.logging.entlib5.nuspec&quot; -OutputDirectory &quot;$(NuGetPackageDir)&quot; -Version $(PackageVersion) -Symbols"
+            LogStandardErrorAsError="true" />
+
+    <!-- ServiceStack.Logging.EventLog -->
+
+    <MSBuild Projects="$(SrcDir)/ServiceStack.Logging.EventLog/ServiceStack.Logging.EventLog.csproj"
+             Targets="Build"
+             Properties="Version=$(PackageVersion);Configuration=$(Configuration)" />
+
+    <MakeDir Directories="$(NuGetPackageDir)/ServiceStack.Logging.EventLog/lib/net35" Condition="!Exists('$(NuGetPackageDir)/ServiceStack.Logging.EventLog/lib/net35')" />
+    <Copy SourceFiles="%(EventLogFiles.Identity)" DestinationFolder="$(NuGetPackageDir)/ServiceStack.Logging.EventLog/lib/net35" />
+
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(NuGetPackageDir)/ServiceStack.Logging.EventLog/servicestack.logging.eventlog.nuspec&quot; -OutputDirectory &quot;$(NuGetPackageDir)&quot; -Version $(PackageVersion) -Symbols"
+            LogStandardErrorAsError="true" />
+
+    <!-- ServiceStack.Logging.Log4Net -->
+
+    <MSBuild Projects="$(SrcDir)/ServiceStack.Logging.Log4Net/ServiceStack.Logging.Log4Net.csproj"
+             Targets="Build"
+             Properties="Version=$(PackageVersion);Configuration=$(Configuration)" />
+
+    <MakeDir Directories="$(NuGetPackageDir)/ServiceStack.Logging.Log4Net/lib/net35" Condition="!Exists('$(NuGetPackageDir)/ServiceStack.Logging.Log4Net/lib/net35')" />
+    <Copy SourceFiles="%(Log4NetFiles.Identity)" DestinationFolder="$(NuGetPackageDir)/ServiceStack.Logging.Log4Net/lib/net35" />
+
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(NuGetPackageDir)/ServiceStack.Logging.Log4Net/servicestack.logging.log4net.nuspec&quot; -OutputDirectory &quot;$(NuGetPackageDir)&quot; -Version $(PackageVersion) -Symbols"
+            LogStandardErrorAsError="true" />
+
+    <!-- ServiceStack.Logging.Log4Netv1210 -->
+
+    <MSBuild Projects="$(SrcDir)/ServiceStack.Logging.Log4Netv1210/ServiceStack.Logging.Log4Netv1210.csproj"
+             Targets="Build"
+             Properties="Version=$(PackageVersion);Configuration=$(Configuration)" />
+
+    <MakeDir Directories="$(NuGetPackageDir)/ServiceStack.Logging.Log4Netv1210/lib/net35" Condition="!Exists('$(NuGetPackageDir)/ServiceStack.Logging.Log4Netv1210/lib/net35')" />
+    <Copy SourceFiles="%(Log4Netv1210Files.Identity)" DestinationFolder="$(NuGetPackageDir)/ServiceStack.Logging.Log4Netv1210/lib/net35" />
+
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(NuGetPackageDir)/ServiceStack.Logging.Log4Netv1210/servicestack.logging.log4netv1210.nuspec&quot; -OutputDirectory &quot;$(NuGetPackageDir)&quot; -Version $(PackageVersion) -Symbols"
+            LogStandardErrorAsError="true" />
+
+    <!-- ServiceStack.Logging.Log4Netv129 -->
+
+    <MSBuild Projects="$(SrcDir)/ServiceStack.Logging.Log4Netv129/ServiceStack.Logging.Log4Netv129.csproj"
+             Targets="Build"
+             Properties="Version=$(PackageVersion);Configuration=$(Configuration)" />
+
+    <MakeDir Directories="$(NuGetPackageDir)/ServiceStack.Logging.Log4Netv129/lib/net35" Condition="!Exists('$(NuGetPackageDir)/ServiceStack.Logging.Log4Netv129/lib/net35')" />
+    <Copy SourceFiles="%(Log4Netv129Files.Identity)" DestinationFolder="$(NuGetPackageDir)/ServiceStack.Logging.Log4Netv129/lib/net35" />
+
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(NuGetPackageDir)/ServiceStack.Logging.Log4Netv129/servicestack.logging.log4netv129.nuspec&quot; -OutputDirectory &quot;$(NuGetPackageDir)&quot; -Version $(PackageVersion) -Symbols"
+            LogStandardErrorAsError="true" />
+
+    <!-- ServiceStack.Logging.NLog -->
+
+    <MSBuild Projects="$(SrcDir)/ServiceStack.Logging.NLog/ServiceStack.Logging.NLog.csproj"
+             Targets="Build"
+             Properties="Version=$(PackageVersion);Configuration=$(Configuration)" />
+
+    <MakeDir Directories="$(NuGetPackageDir)/ServiceStack.Logging.NLog/lib/net35" Condition="!Exists('$(NuGetPackageDir)/ServiceStack.Logging.NLog/lib/net35')" />
+    <Copy SourceFiles="%(NLogFiles.Identity)" DestinationFolder="$(NuGetPackageDir)/ServiceStack.Logging.NLog/lib/net35" />
+
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(NuGetPackageDir)/ServiceStack.Logging.NLog/servicestack.logging.nlog.nuspec&quot; -OutputDirectory &quot;$(NuGetPackageDir)&quot; -Version $(PackageVersion) -Symbols"
+            LogStandardErrorAsError="true" />
+
+  </Target>
+
+</Project>
