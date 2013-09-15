@@ -22,4 +22,8 @@
       <dependency id="ServiceStack.Common" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="lib\**\*.*" target="lib" />
+    <file src="..\..\src\ServiceStack.Logging.Log4Netv1210\**\*.cs" target="src" />
+  </files>
 </package>

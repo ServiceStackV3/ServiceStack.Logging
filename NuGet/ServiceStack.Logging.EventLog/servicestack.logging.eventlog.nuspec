@@ -21,4 +21,8 @@
       <dependency id="ServiceStack.Common" version="[3,4)" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="lib\**\*.*" target="lib" />
+    <file src="..\..\src\ServiceStack.Logging.EventLog\**\*.cs" target="src" />
+  </files>
 </package>
