@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Demis Bellot")]
 [assembly: AssemblyProduct("ServiceStack.Logging.Log4Netv129")]
-[assembly: AssemblyCopyright("Copyright © ServiceStack 2013")]
+[assembly: AssemblyCopyright("Copyright ï¿½ ServiceStack 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
