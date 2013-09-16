@@ -168,8 +168,8 @@
       <Project>{EE43BF1E-CF97-4215-A5A3-46D1C363F928}</Project>
       <Name>ServiceStack.Logging.Elmah</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\ServiceStack.Logging.EnterpriseLibrary5\ServiceStack.Logging.EntLib5.csproj">
-      <Project>{EDD72ADC-327C-4152-B84B-B48552311534}</Project>
+    <ProjectReference Include="..\..\src\ServiceStack.Logging.EntLib5\ServiceStack.Logging.EntLib5.csproj">
+      <Project>{edd72adc-327c-4152-b84b-b48552311534}</Project>
       <Name>ServiceStack.Logging.EntLib5</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\ServiceStack.Logging.EventLog\ServiceStack.Logging.EventLog.csproj">
