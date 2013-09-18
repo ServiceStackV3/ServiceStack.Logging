@@ -1,6 +1,7 @@
-## An implementation-free logging API for .Net
+[Join the ServiceStack Google+ group](http://groups.google.com/group/servicestack) or
+follow [@ServiceStack](http://twitter.com/servicestack) for project updates.
 
-For twitter updates follow <a href="http://twitter.com/demisbellot">@demisbellot</a> or <a href="http://twitter.com/servicestack">@ServiceStack</a>
+## An implementation-free logging API for .Net
 
 **ServiceStack.Logging** is an implementation and dependency-free logging API with adapters for all of .NET's popular logging providers.
 It allows your business logic to bind to an easily-mockable and testable dependency-free interface whilst providing the flexibility to switch logging providers at runtime.
@@ -17,6 +18,8 @@ Currently there are 6 different .NET logging providers available on NuGet:
 #### Install-Package [ServiceStack.Logging.EnterpriseLibrary5](https://nuget.org/packages/ServiceStack.Logging.EnterpriseLibrary5/)
 
 Note: The ConsoleLogger and DebugLogger and are already built-in and bind to .NET Framework's Console and Debug loggers
+
+_Commercial support will be available for ServiceStack, contact team@servicestack.net for details_
 
 -----
 
@@ -63,6 +66,11 @@ Then your application logic can bind to and use a lightweight implementation-fre
     log.Debug("Debug Event Log Entry.");
     log.Warn("Warning Event Log Entry.");
 
+## Copying
 
+Since September 2013, ServiceStack source code is available under GNU Affero General Public License/FOSS License Exception, see license.txt in the source. Alternative commercial licensing is also available, contact team@servicestack.net for details.
 
+## Contributing
 
+Commits should be made to the **v3-fixes** branch so they can be merged into both **v3** and **master** (v4) release branches. 
+Contributors need to approve the [Contributor License Agreement](https://docs.google.com/forms/d/16Op0fmKaqYtxGL4sg7w_g-cXXyCoWjzppgkuqzOeKyk/viewform) before any code will be reviewed, see the [Contributing wiki](https://github.com/ServiceStack/ServiceStack/wiki/Contributing) for more details. 

@@ -19,7 +19,7 @@
     <copyright>servicestack.net 2013 and contributors</copyright>
     <dependencies>
       <dependency id="EnterpriseLibrary.Logging" version="5.0.505.1" />
-      <dependency id="ServiceStack.Common" version="[3,4)" />
+      <dependency id="ServiceStack.Common" version="4" />
     </dependencies>
   </metadata>
   <files>
