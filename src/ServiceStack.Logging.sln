@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Logging.EventL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Logging.Log4Net", "ServiceStack.Logging.Log4Net\ServiceStack.Logging.Log4Net.csproj", "{C44A6E80-326E-4036-8906-62E881F4727D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Logging.Log4Netv129", "ServiceStack.Logging.Log4Netv129\ServiceStack.Logging.Log4Netv129.csproj", "{0E1FF796-55CF-4F9B-BA72-484FC9D65065}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Logging.Tests", "..\tests\ServiceStack.Logging.Tests\ServiceStack.Logging.Tests.csproj", "{DDDA27EC-5855-4E89-9971-C117EC08BDE3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Logging.NLog", "ServiceStack.Logging.NLog\ServiceStack.Logging.NLog.csproj", "{6B31F200-073C-46D4-B389-05646E035939}"
@@ -27,8 +25,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{CA7CF53F
 		..\NuGet\ServiceStack.Logging.NLog\servicestack.logging.nlog.nuspec = ..\NuGet\ServiceStack.Logging.NLog\servicestack.logging.nlog.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Logging.Log4Netv1210", "ServiceStack.Logging.Log4Netv1210\ServiceStack.Logging.Log4Netv1210.csproj", "{6A5E3F1C-5F68-4228-805C-2F2374DCC5C0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Logging.EntLib5", "ServiceStack.Logging.EntLib5\ServiceStack.Logging.EntLib5.csproj", "{EDD72ADC-327C-4152-B84B-B48552311534}"
 EndProject
 Global
@@ -45,10 +41,6 @@ Global
 		{C44A6E80-326E-4036-8906-62E881F4727D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C44A6E80-326E-4036-8906-62E881F4727D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C44A6E80-326E-4036-8906-62E881F4727D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E1FF796-55CF-4F9B-BA72-484FC9D65065}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DDDA27EC-5855-4E89-9971-C117EC08BDE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DDDA27EC-5855-4E89-9971-C117EC08BDE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDDA27EC-5855-4E89-9971-C117EC08BDE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,10 +53,6 @@ Global
 		{EE43BF1E-CF97-4215-A5A3-46D1C363F928}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE43BF1E-CF97-4215-A5A3-46D1C363F928}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE43BF1E-CF97-4215-A5A3-46D1C363F928}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A5E3F1C-5F68-4228-805C-2F2374DCC5C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A5E3F1C-5F68-4228-805C-2F2374DCC5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A5E3F1C-5F68-4228-805C-2F2374DCC5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A5E3F1C-5F68-4228-805C-2F2374DCC5C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EDD72ADC-327C-4152-B84B-B48552311534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EDD72ADC-327C-4152-B84B-B48552311534}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDD72ADC-327C-4152-B84B-B48552311534}.Release|Any CPU.ActiveCfg = Release|Any CPU
