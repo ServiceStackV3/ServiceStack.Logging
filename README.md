@@ -1,3 +1,7 @@
+# The latest Logging projects have now been merged into the main [ServiceStack](https://github.com/ServiceStack/ServiceStack/) repo.
+
+----
+
 [Join the ServiceStack Google+ group](http://groups.google.com/group/servicestack) or
 follow [@ServiceStack](http://twitter.com/servicestack) for project updates.
 
